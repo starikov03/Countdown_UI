@@ -1,5 +1,5 @@
 import { UI_ELEMENTS } from './view.mjs'
-import { intervalToDuration, formatDuration, isFuture } from 'date-fns'
+import { intervalToDuration, formatDuration, isFuture } from "date-fns";
 let curentDate = "";
 
 
