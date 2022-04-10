@@ -1,0 +1,94 @@
+@import "https://fonts.googleapis.com/css2?family=Roboto&display=swap";
+html {
+  box-sizing: border-box;
+}
+
+*, :before, :after {
+  box-sizing: inherit;
+}
+
+body {
+  color: #ada5a5;
+  size: 18px;
+  background-color: #34383d;
+  font-family: Roboto, sans-serif;
+}
+
+.container {
+  width: 1000px;
+  min-height: 230px;
+  text-align: center;
+  background-color: #34383d;
+  flex-direction: column;
+  margin: 200px auto;
+  padding: 12px 8px;
+  display: flex;
+}
+
+.text__hight {
+  text-shadow: 2px 8px 6px #0003, 0 -5px 35px #0e0e0e4d;
+  margin: 12px 0;
+  padding-bottom: 15px;
+  font-size: 50px;
+}
+
+.text__date {
+  text-shadow: 2px 8px 6px #0003, 0 -5px 35px #0e0e0e4d;
+  margin: 20px 5px;
+  font-size: x-large;
+}
+
+.date {
+  color: #ae3939;
+  text-shadow: 2px 8px 6px #0003, 0 -5px 35px #0e0e0e4d;
+  font-size: 40px;
+}
+
+input::-webkit-datetime-edit-day-field:focus, input::-webkit-datetime-edit-month-field:focus, input::-webkit-datetime-edit-year-field:focus {
+  color: #34383d;
+  background-color: #d34444;
+  outline: none;
+}
+
+form {
+  justify-content: center;
+  transition: all .2s;
+  display: flex;
+}
+
+form input, form button {
+  font-size: 25px;
+}
+
+form input {
+  background-color: inherit;
+  border: 1px solid #ada5a5;
+  border-radius: 5px;
+  margin-right: 10px;
+  padding: 5px 20px;
+}
+
+form input::placeholder, form button::placeholder {
+  color: #000;
+}
+
+form button {
+  cursor: pointer;
+  color: #fff;
+  width: 100px;
+  background: linear-gradient(to right, #ae3939 0, #b34545 100%) no-repeat;
+  border: 1px solid #ae3939;
+  border-radius: 5px;
+  padding: 10px;
+  font-family: Roboto, sans-serif;
+  font-size: 20px;
+  font-weight: normal;
+  transition: all .2s;
+  box-shadow: 0 6px 12px #0000002e;
+}
+
+form button:hover {
+  box-shadow: 0 8px 12px #0000002e;
+}
+
+/*# sourceMappingURL=index.b2625c6b.css.map */
