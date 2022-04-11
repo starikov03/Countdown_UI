@@ -1,41 +1,19 @@
-import { UI_ELEMENTS } from './view.mjs'
-import { intervalToDuration, formatDuration, isFuture } from "date-fns";
-let curentDate = "";
-
+import { UI_ELEMENTS, startWork } from './view.mjs'
 
 UI_ELEMENTS.FORM.addEventListener('submit', (e) => {
 	e.preventDefault();
 
-
-	if (isFuture(getInputDate())) {
-		curentDate = getInputDate();
-		getTimeUntilDate();
-	} else {
-		curentDate = "";
-		showUI("The date has already passed");
-	}
+	startWork();
 });
 
-function getInputDate() {
+export function getInputDate() {
 	return new Date(UI_ELEMENTS.INPUT.value)
 }
 
-function getNowDate() {
+export function getNowDate() {
 	return new Date();
 }
 
-function getTimeUntilDate() {
-
-	let timeObject = intervalToDuration({
-		start: getNowDate(),
-		end: curentDate,
-	})
-
-	showUI(formatDuration(timeObject));
-
-	setTimeout(() => { getTimeUntilDate(curentDate) }, 1000)
-}
-
-function showUI(Obj) {
+export function showUI(Obj) {
 	UI_ELEMENTS.DATE.textContent = Obj;
 }

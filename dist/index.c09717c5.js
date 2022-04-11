@@ -514,18 +514,18 @@ function hmrAcceptRun(bundle, id) {
 }
 
 },{}],"kkGe5":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "getInputDate", ()=>getInputDate
+);
+parcelHelpers.export(exports, "getNowDate", ()=>getNowDate
+);
+parcelHelpers.export(exports, "showUI", ()=>showUI
+);
 var _viewMjs = require("./view.mjs");
-var _dateFns = require("date-fns");
-let curentDate = "";
 _viewMjs.UI_ELEMENTS.FORM.addEventListener('submit', (e)=>{
     e.preventDefault();
-    if (_dateFns.isFuture(getInputDate())) {
-        curentDate = getInputDate();
-        getTimeUntilDate();
-    } else {
-        curentDate = "";
-        showUI("The date has already passed");
-    }
+    _viewMjs.startWork();
 });
 function getInputDate() {
     return new Date(_viewMjs.UI_ELEMENTS.INPUT.value);
@@ -533,62 +533,46 @@ function getInputDate() {
 function getNowDate() {
     return new Date();
 }
-function getTimeUntilDate() {
-    let timeObject = _dateFns.intervalToDuration({
-        start: getNowDate(),
-        end: curentDate
-    });
-    showUI(_dateFns.formatDuration(timeObject));
-    setTimeout(()=>{
-        getTimeUntilDate(curentDate);
-    }, 1000);
-}
 function showUI(Obj) {
     _viewMjs.UI_ELEMENTS.DATE.textContent = Obj;
 }
 
-},{"./view.mjs":"i1yN4","date-fns":"9yHCA"}],"i1yN4":[function(require,module,exports) {
+},{"./view.mjs":"i1yN4","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"i1yN4":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "UI_ELEMENTS", ()=>UI_ELEMENTS
 );
+parcelHelpers.export(exports, "startWork", ()=>startWork
+);
+var _dateFns = require("date-fns");
+var _mainMjs = require("./main.mjs");
 const UI_ELEMENTS = {
     FORM: document.querySelector('.countdown__form'),
     INPUT: document.querySelector('.countdown__input'),
     DATE: document.querySelector('.date')
 };
+let curentDate = "";
+function startWork() {
+    if (_dateFns.isFuture(_mainMjs.getInputDate())) {
+        curentDate = _mainMjs.getInputDate();
+        getTimeUntilDate();
+    } else {
+        curentDate = "";
+        _mainMjs.showUI("The date has already passed");
+    }
+}
+function getTimeUntilDate() {
+    let timeObject = _dateFns.intervalToDuration({
+        start: _mainMjs.getNowDate(),
+        end: curentDate
+    });
+    _mainMjs.showUI(_dateFns.formatDuration(timeObject));
+    setTimeout(()=>{
+        getTimeUntilDate(curentDate);
+    }, 1000);
+}
 
-},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"gkKU3":[function(require,module,exports) {
-exports.interopDefault = function(a) {
-    return a && a.__esModule ? a : {
-        default: a
-    };
-};
-exports.defineInteropFlag = function(a) {
-    Object.defineProperty(a, '__esModule', {
-        value: true
-    });
-};
-exports.exportAll = function(source, dest) {
-    Object.keys(source).forEach(function(key) {
-        if (key === 'default' || key === '__esModule' || dest.hasOwnProperty(key)) return;
-        Object.defineProperty(dest, key, {
-            enumerable: true,
-            get: function() {
-                return source[key];
-            }
-        });
-    });
-    return dest;
-};
-exports.export = function(dest, destName, get) {
-    Object.defineProperty(dest, destName, {
-        enumerable: true,
-        get: get
-    });
-};
-
-},{}],"9yHCA":[function(require,module,exports) {
+},{"date-fns":"9yHCA","./main.mjs":"kkGe5","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"9yHCA":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 // This file is generated automatically by `scripts/build/indices.js`. Please, don't change it.
@@ -1571,7 +1555,37 @@ function toInteger(dirtyNumber) {
 }
 exports.default = toInteger;
 
-},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"fsust":[function(require,module,exports) {
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"gkKU3":[function(require,module,exports) {
+exports.interopDefault = function(a) {
+    return a && a.__esModule ? a : {
+        default: a
+    };
+};
+exports.defineInteropFlag = function(a) {
+    Object.defineProperty(a, '__esModule', {
+        value: true
+    });
+};
+exports.exportAll = function(source, dest) {
+    Object.keys(source).forEach(function(key) {
+        if (key === 'default' || key === '__esModule' || dest.hasOwnProperty(key)) return;
+        Object.defineProperty(dest, key, {
+            enumerable: true,
+            get: function() {
+                return source[key];
+            }
+        });
+    });
+    return dest;
+};
+exports.export = function(dest, destName, get) {
+    Object.defineProperty(dest, destName, {
+        enumerable: true,
+        get: get
+    });
+};
+
+},{}],"fsust":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 var _indexJs = require("../_lib/requiredArgs/index.js");
